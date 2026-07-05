@@ -1,0 +1,16 @@
+[
+  {
+    "title": "Credit Card Fraud Detection API",
+    "description": "Machine learning API that classifies credit card transactions as legitimate or fraudulent with explainable outputs.",
+    "stack": ["Python","scikit-learn", "sqlite"],
+    "demoUrl": "https://your-demo-link.com",
+    "sourceUrl": "https://github.com/yourusername/cc-fraud-api"
+  },
+  {
+    "title": "Full‑Stack Transaction Dashboard",
+    "description": "Interactive dashboard for monitoring transactions, built with React and Node.js.",
+    "stack": ["React", "Node.js", "Express", "MongoDB"],
+    "demoUrl": "",
+    "sourceUrl": "https://github.com/yourusername/transaction-dashboard"
+  }
+]
