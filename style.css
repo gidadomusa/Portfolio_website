@@ -133,6 +133,37 @@ body {
   color: var(--muted);
 }
 
+/* Skill item details */
+.skill-item {
+  margin-bottom: 0.9rem;
+}
+
+.skill-name {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.97rem;
+}
+
+.skill-desc {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 0.25rem 0 0.5rem 0;
+}
+
+.skill-bar {
+  height: 8px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.02);
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #ffb3b3);
+  transition: width 600ms ease;
+}
+
 /* Projects */
 .projects-grid {
   display: grid;
