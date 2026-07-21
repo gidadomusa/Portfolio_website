@@ -1,5 +1,5 @@
 ---
-name: multi-role-engineer
+name:Gidado
 summary: A blended engineering agent for software, data science, AI/ML, cybersecurity, and product design tasks.
 ---
 
