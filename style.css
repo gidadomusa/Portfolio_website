@@ -56,9 +56,232 @@ body {
 /* Hero */
 .hero {
   min-height: 70vh;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 1fr);
   align-items: center;
+  gap: 2rem;
+  position: relative;
+  overflow: hidden;
   padding: 4rem 8vw 2rem;
+}
+
+.hero-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  min-height: 420px;
+}
+
+.ai-animation {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 20% 20%, rgba(239, 107, 107, 0.2), transparent 35%),
+    radial-gradient(circle at 80% 70%, rgba(56, 189, 248, 0.12), transparent 30%);
+  box-shadow: inset 0 0 40px rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.ai-animation::before,
+.ai-animation::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  top: -20%;
+  left: -20%;
+  width: 140%;
+  height: 140%;
+  border: 1px dashed rgba(255, 255, 255, 0.08);
+  animation: rotate 18s linear infinite;
+}
+
+.ai-animation::after {
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  border-style: solid;
+  opacity: 0.6;
+  animation-direction: reverse;
+}
+
+.ai-core {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ef6b6b, #38bdf8);
+  box-shadow: 0 0 38px rgba(239, 107, 107, 0.45);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+.ai-node {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 2px solid rgba(239, 107, 107, 0.9);
+  box-shadow: 0 0 16px rgba(239, 107, 107, 0.28);
+  animation: node-float 5s ease-in-out infinite;
+}
+
+.ai-node::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.22);
+  opacity: 0;
+  animation: burst 2.8s ease-in-out infinite;
+}
+
+.ai-node.node-1 {
+  top: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-delay: 0s;
+}
+
+.ai-node.node-2 {
+  top: 42%;
+  left: 88%;
+  animation-delay: 0.4s;
+}
+
+.ai-node.node-3 {
+  top: 82%;
+  left: 65%;
+  animation-delay: 0.8s;
+}
+
+.ai-node.node-4 {
+  top: 78%;
+  left: 17%;
+  animation-delay: 1.2s;
+}
+
+.ai-node.node-5 {
+  top: 40%;
+  left: 6%;
+  animation-delay: 1.6s;
+}
+
+.ml-chart {
+  position: relative;
+  width: 100%;
+  max-width: 280px;
+  min-height: 220px;
+  padding: 1.4rem 1.2rem 1.2rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.04);
+}
+
+.ml-chart::before {
+  content: "AI / ML Trends";
+  position: absolute;
+  top: 1rem;
+  left: 1.1rem;
+  font-size: 0.78rem;
+  color: var(--text);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.bar {
+  position: absolute;
+  bottom: 1.2rem;
+  width: 15%;
+  border-radius: 999px 999px 0 0;
+  background: linear-gradient(180deg, #38bdf8 0%, rgba(56, 189, 248, 0.18) 100%);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  animation: bar-grow 1.5s ease forwards;
+}
+
+.bar-1 {
+  left: 14%;
+  height: 56%;
+  animation-delay: 0.2s;
+}
+
+.bar-2 {
+  left: 35%;
+  height: 68%;
+  animation-delay: 0.4s;
+}
+
+.bar-3 {
+  left: 55%;
+  height: 74%;
+  animation-delay: 0.6s;
+}
+
+.bar-4 {
+  left: 76%;
+  height: 60%;
+  animation-delay: 0.8s;
+}
+
+.chart-line {
+  position: absolute;
+  bottom: 1.28rem;
+  left: 10%;
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--accent) 50%, transparent 100%);
+  opacity: 0.75;
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: line-draw 1.8s ease forwards 1s;
+}
+
+.chart-line::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 18px rgba(239, 107, 107, 0.45);
+}
+
+@keyframes pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.08); }
+}
+
+@keyframes node-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes burst {
+  0%, 100% { opacity: 0; transform: scale(0.95); }
+  45% { opacity: 0.45; transform: scale(1.4); }
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes bar-grow {
+  to { transform: scaleY(1); }
+}
+
+@keyframes line-draw {
+  to { transform: scaleX(1); }
 }
 
 .hero-content h1 {
