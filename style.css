@@ -284,6 +284,13 @@ body {
   to { transform: scaleX(1); }
 }
 
+@keyframes pop-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .hero-content h1 {
   font-size: clamp(2.3rem, 4vw, 3.2rem);
   margin-bottom: 0.5rem;
@@ -330,6 +337,44 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 1.5rem;
+}
+
+.skills-visuals {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.8rem;
+}
+
+.skill-card-bubble {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1rem 1rem 0.95rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  transform: translateY(22px);
+  animation: pop-in 0.75s ease forwards;
+}
+
+.skill-card-bubble:hover {
+  transform: translateY(-2px);
+}
+
+.skill-card-bubble span {
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.skill-icon {
+  width: 42px;
+  height: 42px;
+  color: #38bdf8;
 }
 
 .skill-category {
