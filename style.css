@@ -312,6 +312,41 @@ body {
 }
 
 /* Generic sections */
+#skills {
+  position: relative;
+  overflow: hidden;
+}
+
+#skills .skills-bg-anim {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.55;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(56, 189, 248, 0.22), transparent 15%),
+    radial-gradient(circle at 80% 28%, rgba(239, 107, 107, 0.18), transparent 12%),
+    radial-gradient(circle at 50% 82%, rgba(59, 130, 246, 0.16), transparent 14%),
+    linear-gradient(135deg, rgba(56, 189, 248, 0.08) 25%, transparent 25%, transparent 50%, rgba(239, 107, 107, 0.08) 50%, rgba(239, 107, 107, 0.08) 75%, transparent 75%, transparent);
+  background-size: 120% 120%, 100% 100%, 95% 95%, 220% 220%;
+  animation: bg-pan 22s linear infinite;
+}
+
+#skills .skills-bg-anim::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.3;
+  animation: bg-dots 18s linear infinite reverse;
+}
+
+#skills > * {
+  position: relative;
+  z-index: 1;
+}
+
 .section {
   padding: 3rem 8vw;
   background: rgba(15, 23, 42, 0.9);
@@ -320,6 +355,24 @@ body {
 
 .section:nth-of-type(even) {
   background: rgba(2, 6, 23, 0.95);
+}
+
+@keyframes bg-pan {
+  0% {
+    background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+  100% {
+    background-position: -110% 0%, 120% 120%, 0% -110%, 120% 120%;
+  }
+}
+
+@keyframes bg-dots {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 40px;
+  }
 }
 
 .section h2 {
