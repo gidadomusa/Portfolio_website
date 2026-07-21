@@ -347,22 +347,23 @@ body {
 }
 
 .skill-card-bubble {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 0.9rem;
   padding: 1rem 1rem 0.95rem;
   border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.12);
-  backdrop-filter: blur(8px);
+  background: rgba(10, 18, 40, 0.95);
+  border: 1px solid rgba(56, 189, 248, 0.18);
+  box-shadow: 0 24px 45px rgba(0, 0, 0, 0.14);
+  backdrop-filter: blur(10px);
   opacity: 0;
-  transform: translateY(22px);
+  transform: translateY(24px);
   animation: pop-in 0.75s ease forwards;
 }
 
 .skill-card-bubble:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px);
 }
 
 .skill-card-bubble span {
@@ -371,10 +372,152 @@ body {
   font-weight: 600;
 }
 
-.skill-icon {
+.skill-thumb {
+  width: 58px;
+  height: 58px;
+  border-radius: 1rem;
+  background: linear-gradient(180deg, rgba(56, 189, 248, 0.12), rgba(239, 107, 107, 0.08));
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.skill-thumb::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.18), transparent 50%);
+}
+
+.thumb-node {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #38bdf8;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
+}
+
+.thumb-center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  background: #ef6b6b;
+  box-shadow: 0 0 18px rgba(239, 107, 107, 0.65);
+}
+
+.thumb-side {
+  animation: node-sway 4.4s ease-in-out infinite;
+}
+
+.side-a { top: 14%; left: 50%; transform: translateX(-50%); }
+.side-b { top: 52%; right: 12%; }
+.side-c { bottom: 14%; left: 52%; transform: translateX(-50%); }
+
+.thumb-line {
+  position: absolute;
+  border-radius: 999px;
+  background: rgba(56, 189, 248, 0.35);
+}
+
+.line-a { width: 2px; height: 18px; top: 22%; left: 50%; transform: translateX(-50%); }
+.line-b { width: 18px; height: 2px; top: 50%; right: 22%; transform: translateY(-50%); }
+.line-c { width: 2px; height: 18px; bottom: 22%; left: 50%; transform: translateX(-50%); }
+
+.skill-thumb-bar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 6px;
+}
+
+.thumb-bar {
+  width: 12px;
+  background: linear-gradient(180deg, #38bdf8 0%, rgba(56, 189, 248, 0.15) 100%);
+  border-radius: 999px 999px 0 0;
+  animation: bar-pop 1.2s ease forwards;
+}
+
+.bar-1 { height: 26px; animation-delay: 0.1s; }
+.bar-2 { height: 36px; animation-delay: 0.2s; }
+.bar-3 { height: 46px; animation-delay: 0.3s; }
+
+.thumb-dot {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ef6b6b;
+  box-shadow: 0 0 12px rgba(239, 107, 107, 0.6);
+}
+
+.skill-thumb-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  padding: 10px;
+}
+
+.thumb-data-row {
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.3);
+  animation: row-glow 1.4s ease infinite alternate;
+}
+
+.thumb-data-row.short { width: 55%; }
+
+.skill-thumb-model {
+  display: grid;
+  place-items: center;
+  padding: 8px;
+}
+
+.thumb-grid {
   width: 42px;
   height: 42px;
-  color: #38bdf8;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+}
+
+.thumb-grid div {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.85);
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.28);
+  animation: grid-pulse 1.8s ease-in-out infinite;
+}
+
+.thumb-grid div:nth-child(odd) {
+  background: rgba(239, 107, 107, 0.95);
+}
+
+@keyframes node-sway {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes bar-pop {
+  from { transform: scaleY(0.2); }
+  to { transform: scaleY(1); }
+}
+
+@keyframes row-glow {
+  from { opacity: 0.45; }
+  to { opacity: 1; }
+}
+
+@keyframes grid-pulse {
+  0%, 100% { transform: scale(0.92); opacity: 0.85; }
+  50% { transform: scale(1.08); opacity: 1; }
 }
 
 .skill-category {
